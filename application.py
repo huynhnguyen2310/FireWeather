@@ -30,7 +30,7 @@ def predict():
         Region = float(request.form.get('Region'))
         data_scaled = scaler.transform([[Temperature, RH, Ws, Rain, FFMC, DMC, ISI, Classes, Region]])
         results = ridge_model.predict(data_scaled)
-        return render_template('home.html', results=results[0])
+        return render_template('home.html', results=round(results[0], 2))
     else:
         return render_template('home.html')
 if __name__ == '__main__':
